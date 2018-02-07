@@ -1,18 +1,18 @@
 var cachelee = require('./src/index');
 
 
-cache = new cachelee.Cache({ limit: 500, strategy: cachelee.Strategy.MostFrequentlyUsed});
+cacheManager = new cachelee.Cache({ limit: 500, strategy: cachelee.Strategy.MostFrequentlyUsed});
 
-// cash.setStrategy(cash.Strategy.MostRecentlyUsed);
+cacheManager.setStrategy(cachelee.Strategy.MostRecentlyUsed);
 
-cache.cache('a',{value: 'a'});
-cache.cache('b',{value: 'b'});
-cache.cache('c',{value: 'c'});
-cache.cache('d',{value: 'd'});
+cacheManager.cache('a',{value: 'a'});
+cacheManager.cache('b',{value: 'b'});
+cacheManager.cache('c',{value: 'c'});
+cacheManager.cache('d',{value: 'd'});
 
 
-console.log(cache.get('d'));
-console.log(cache.get('p'));
+console.log(cacheManager.get('d'));
+console.log(cacheManager.get('p'));
 
 
 

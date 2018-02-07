@@ -29,7 +29,7 @@ function Cachelee(options) {
 
     this.cache = function (key,item) {
 
-        if (!indexMap.has(key) && cachedItems.length < settings.limit){
+        if ( !indexMap.has(key) && cachedItems.length < settings.limit ){
 
             cachedItems.push(item);
             indexMap.set(key,cachedItems.length - 1);
@@ -37,7 +37,9 @@ function Cachelee(options) {
 
         } else {
 
-            return false;
+            settings.strategy(indexMap, key, null, cachedItems, item, settings.limit);
+
+            return true;
         }
     };
 
@@ -59,39 +61,63 @@ function Cachelee(options) {
     };
 
     this.maxSize = function () {
-        return cacheItemsLimit;
+        return settings.limit;
     };
 
-    // this.Strategy = {
-    //     MostRecentlyUsed: this.MostRecentlyUsed,
-    //     MostFrequentlyUsed: this.MostFrequentlyUsed
-    // }
 }
 
 
-function MostRecentlyUsed (indexMap, key, itemIndex, cachedItems) {
 
-    var item = cachedItems[itemIndex];
+function MostFrequentlyUsed(indexMap, key, itemIndex, cachedItems, _item, _limit) {
 
-    cachedItems.splice(itemIndex, 1);
-    cachedItems.splice(0, 0, item);
+    if (!_item) {
+        var item = cachedItems[itemIndex];
 
-    indexMap.set(key,0);
+        cachedItems.splice(itemIndex - 1, 0, item);
+        cachedItems.splice(itemIndex + 1, 1);
 
-    return item;
+        indexMap.set(key, itemIndex - 1);
 
+        return item;
+
+    } else {
+
+        if (cachedItems.length >= _limit) {
+            cachedItems.splice(cachedItems.length -1 , 1);
+
+        }
+
+        cachedItems.push(_item);
+        indexMap.set(key,cachedItems.length - 1);
+
+        return _item;
+    }
 }
 
-function MostFrequentlyUsed(indexMap, key, itemIndex, cachedItems) {
+function MostRecentlyUsed(indexMap, key, itemIndex, cachedItems, _item, _limit) {
 
-    var item = cachedItems[itemIndex];
+    if (!_item) {
+        var item = cachedItems[itemIndex];
 
-    cachedItems.splice(itemIndex - 1, 0, item);
-    cachedItems.splice(itemIndex + 1, 1);
+        cachedItems.splice(itemIndex, 1);
+        cachedItems.splice(0, 0, item);
 
-    indexMap.set(key,itemIndex - 1);
+        indexMap.set(key, 0);
 
-    return item;
+        return item;
+
+    } else {
+
+        if (cachedItems.length >= _limit) {
+            cachedItems.splice(0 , 1);
+        }
+
+        cachedItems.splice(0, 0, _item);
+        indexMap.set(key, 0);
+
+        return _item;
+    }
+
 }
 
 module.exports = {

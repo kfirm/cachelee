@@ -30,3 +30,9 @@ cacheManager.cache('B',{value: 'B'});
 cacheManager.cache('C',{value: 'C'});
 
 ```
+
+You can also change strategy by:
+
+```$xslt
+cacheManager.setStrategy(cachelee.Strategy.MostRecentlyUsed);
+```
