@@ -1,0 +1,32 @@
+{
+  "name": "cachelee",
+  "version": "1.0.0",
+  "description": "A fast caching mechanism for NodeJS applications.",
+  "main": "src/cachelee.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kfirm/cachelee.git"
+  },
+  "keywords": [
+    "cache",
+    "caching"
+  ],
+  "author": "Kfir Marouani <dev.kfir@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kfirm/cachelee/issues"
+  },
+  "homepage": "https://github.com/kfirm/cachelee",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0"
+  },
+  "dependencies": {
+    "linkedlee": "^1.1.4"
+  }
+}

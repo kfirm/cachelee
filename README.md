@@ -14,15 +14,15 @@ A fast caching mechanism for NodeJS applications
  
  | Property      | Value         | Default  |
  | ------------- |:-------------:| --------:|
- | limit         | numeric       |   200    |
- | strategy      | MFU/MRU       |   MFU    |
+ | limit         | numeric       |   1000   |
+ | strategy      | LRU/LFU       |    LFU   |
  
  
  ```$xslt
 var cachelee = require('cachelee');
 
 var cacheManager = new cachelee.Cache( {   limit: 500, 
-                                            strategy: cachelee.Strategy.MostFrequentlyUsed
+                                            strategy: cachelee.Strategy.LeastRecentlyUsed
                                         });
 
 cacheManager.cache('A',{value: 'A'});
@@ -34,5 +34,5 @@ cacheManager.cache('C',{value: 'C'});
 You can also change strategy by:
 
 ```$xslt
-cacheManager.setStrategy(cachelee.Strategy.MostRecentlyUsed);
+cacheManager.setStrategy(cachelee.Strategy.LeastFrequentlyUsed);
 ```
