@@ -1,6 +1,6 @@
 {
   "name": "cachelee",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A fast caching mechanism for NodeJS applications.",
   "main": "src/cachelee.min.js",
   "scripts": {
