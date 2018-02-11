@@ -23,8 +23,8 @@ A fast caching mechanism for NodeJS applications
  
  **cacheManager.cache(key, value)** - add to cache with key and value. Note that the key could be anything (string, object etc.)    
  **cacheManager.get(key)** - get cached object by key. returns null of none existing    
- **cacheManager.size(key)** - get current size of the cache  
- **cacheManager.maxSize(key)** - get the max size set for the cache  
+ **cacheManager.size()** - get current size of the cache  
+ **cacheManager.maxSize()** - get the max size set for the cache  
  **cacheManager.setStrategy(strategy)** - change the caching strategy (see example below)  
  
  ```$xslt
