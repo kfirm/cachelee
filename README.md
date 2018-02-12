@@ -25,7 +25,7 @@ A fast caching mechanism for NodeJS applications
  **cacheManager.get(key)** - get cached object by key. returns null of none existing    
  **cacheManager.size()** - get current size of the cache  
  **cacheManager.maxSize()** - get the max size set for the cache  
- **cacheManager.setStrategy(strategy)** - change the caching strategy (see example below)  
+ **cacheManager.setStrategy(strategy)** - change the caching strategy. In this you have two possibilities: **LeastRecentlyUsed** (default) or **LeastFrequentlyUsed**. (see example below)
  
  ```$xslt
 var cachelee = require('cachelee');
