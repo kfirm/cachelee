@@ -16,7 +16,7 @@ function Cachelee(options) {
 
     var settings = {
         limit: 1000,
-        strategy: LeastFrequentlyUsed
+        strategy: new LeastFrequentlyUsed()
     };
 
     overrideSettings(settings, options);

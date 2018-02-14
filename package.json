@@ -1,6 +1,6 @@
 {
   "name": "cachelee",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A fast caching mechanism for NodeJS applications.",
   "main": "src/cachelee.min.js",
   "scripts": {
@@ -27,6 +27,6 @@
     "gulp-uglify": "^3.0.0"
   },
   "dependencies": {
-    "linkedlee": "^1.1.4"
+    "linkedlee": "^1.4.2"
   }
 }
